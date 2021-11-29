@@ -2,6 +2,15 @@ h1 {
     text-align: center;
 }
 
+/*
+how tf do you center this goddamnit
+
+.formsection {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+} */
+
 .myTodos {
     color: black;
     margin-top: 3rem;
