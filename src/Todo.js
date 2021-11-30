@@ -7,9 +7,13 @@ import axios from 'axios';
 export default function Todo(props) {
   const [checked, setChecked] = useState(props.completed);
 
-  const handleTrash = () => {
-    console.log("trash");
-  }
+  // const handleTrash = () => {
+  // let url = `https://cse204.work/todos/${props.id}`;
+  // axios.delete(url, props.config).then(function (response) {
+  //   console.log(response.data);
+  // });
+
+  // }
 
   const handleCheck = () => {
     let url = `https://cse204.work/todos/${props.id}`;
@@ -34,7 +38,7 @@ export default function Todo(props) {
       <p className={`todo-title ${(checked && "strike-through")}`}>
         {props.bodyText}
       </p>
-      <button type="button" className="btn trash-btn ms-auto" onClick={handleTrash}>
+      <button type="button" className="btn trash-btn ms-auto" onClick={props.handleDelete}>
         <FontAwesomeIcon icon={faTrash} size="lg" />
       </button>
     </div>

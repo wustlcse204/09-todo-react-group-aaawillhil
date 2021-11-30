@@ -20,6 +20,16 @@ export default function App() {
     })
   }, []);
 
+  const handleDelete = (id) => {
+    let url = `https://cse204.work/todos/${id}`;
+    axios.delete(url, config).then(function (response) {
+      console.log(response.data);
+      const newTodos = todos.filter(todo => todo.id !== id);
+      setTodos(newTodos);
+      console.log(newTodos);
+    });
+  }
+
   return (
     <div className="App">
       <div className="container text-center">
@@ -28,7 +38,16 @@ export default function App() {
           <Newtodo />
           <div className="todo-container">
             {todos.map(todo => {
-              return <Todo key={todo.id} id={todo.id} bodyText={todo.text} completed={todo.completed} config={config} />
+              return (
+                <Todo
+                  key={todo.id}
+                  id={todo.id}
+                  bodyText={todo.text}
+                  completed={todo.completed}
+                  config={config}
+                  handleDelete={handleDelete}
+                />
+              )
             })}
           </div>
         </div>
