@@ -4,21 +4,26 @@
     }
 }
 
+@media screen and (min-width: 601px) {
+    .todo-input-media {
+        width: 30rem !important;
+    }
+}
+
 .todo-input {
-    width: 30rem;
-    height: 3rem;
-    border-radius: 0;
+    height: 3rem !important;
+    border-radius: 0 !important;
 }
 
 .form-btn {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
     height: 50px;
 }
 
 .form-text-btn {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 .input-span {
