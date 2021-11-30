@@ -4,3 +4,8 @@ body {
     padding-top: 60px !important;
     padding-bottom: 40px !important;
 }
+
+.todo-container {
+    color: black !important;
+    margin-top: 2rem !important;
+}
