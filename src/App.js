@@ -22,6 +22,7 @@ export default function App() {
 
   const handleDelete = (id) => {
     let url = `https://cse204.work/todos/${id}`;
+    console.log(url);
     axios.delete(url, config).then(function (response) {
       console.log(response.data);
       const newTodos = todos.filter(todo => todo.id !== id);
