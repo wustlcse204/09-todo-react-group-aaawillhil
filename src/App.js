@@ -17,21 +17,23 @@ export default function App() {
 
   useEffect(() => {
     if (sortOption !== "") {
-      const methods = {
-        text: "text",
-        completed: "completed",
-        created_at: "created_at"
-      }
-      const sortProperty = methods[sortOption];
-      console.log(sortProperty);
-      const sorted = [...todos].sort((a, b) => (a[sortProperty] > b[sortProperty]) - (a[sortProperty] < b[sortProperty]));
-      console.log(sorted);
-      setSortedTodos(sorted);
+      sort();
     }
   }, [sortOption]);
 
   const handleSort = (method) => {
     setSortOption(method);
+  }
+
+  const sort = () => {
+    const methods = {
+      text: "text",
+      completed: "completed",
+      created_at: "created_at"
+    }
+    const sortProperty = methods[sortOption];
+    const sorted = [...todos].sort((a, b) => (a[sortProperty] > b[sortProperty]) - (a[sortProperty] < b[sortProperty]));
+    setSortedTodos(sorted);
   }
 
   useEffect(() => {
@@ -44,7 +46,6 @@ export default function App() {
 
   const handleDelete = (id) => {
     let url = `https://cse204.work/todos/${id}`;
-    console.log(url);
     axios.delete(url, config).then(function (response) {
       console.log(response.data);
       const newTodos = todos.filter(todo => todo.id !== id);
@@ -65,6 +66,19 @@ export default function App() {
       setTodos(todos => [res, ...todos]);
       setSortedTodos(todos => [res, ...todos])
     })
+  }
+
+  const handleCheckUpdate = (url, data) => {
+    axios.put(url, data, config).then(function (response) {
+      console.log("Checked:", response.data);
+      const updatedTodo = response.data;
+      const todoIndex = todos.findIndex((obj) => obj.id === updatedTodo.id);
+      let tempArr = todos;
+      tempArr[todoIndex] = updatedTodo;
+      setSortedTodos(tempArr);
+      setTodos(tempArr);
+      sort();
+    });
   }
 
   return (
@@ -91,6 +105,7 @@ export default function App() {
                   completed={todo.completed}
                   config={config}
                   handleDelete={handleDelete}
+                  handleCheckUpdate={handleCheckUpdate}
                 />
               )
             })}

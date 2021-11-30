@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Todo.css';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
 
 export default function Todo(props) {
   const [checked, setChecked] = useState(props.completed);
@@ -12,9 +11,7 @@ export default function Todo(props) {
     let data = {
       "completed": !checked
     }
-    axios.put(url, data, props.config).then(function (response) {
-      console.log("Checked:", response.data);
-    });
+    props.handleCheckUpdate(url, data);
 
     setChecked(!checked);
   }
