@@ -1,13 +1,44 @@
 .todo {
-    margin: auto;
-    width: 25%;
-    display: flex;
-    justify-content: space-between;
+    margin: auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
     flex-direction: row !important;
-    word-wrap: break-word;
-    background-color: white;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
-    margin-bottom: 1.5rem;
+    word-wrap: break-word !important;
+    background-color: white !important;
+    background-clip: border-box !important;
+    border: 1px solid rgba(0, 0, 0, .125) !important;
+    border-radius: .25rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.todo-container {
+    color: black !important;
+    margin-top: 3rem !important;
+}
+
+.todo-title {
+    margin-top: 1rem !important;
+    font-size: larger !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.trash-btn {
+    margin-right: .5rem !important;
+}
+
+.checkbox {
+    transform: scale(1.75) !important;
+    margin: auto !important;
+    margin-left: 1.5rem !important;
+}
+
+.strike-through {
+    text-decoration: line-through !important;
+}
+
+@media screen and (min-width: 600px) {
+    .todo {
+        width: 50rem !important;
+    }
 }

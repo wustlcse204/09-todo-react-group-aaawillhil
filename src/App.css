@@ -1,50 +1,6 @@
 body {
-    background-color: #1f2933;
-    color: #f5f7fa;
-    padding-top: 60px;
-    padding-bottom: 40px;
-}
-
-.todo-container {
-    color: black;
-    margin-top: 3rem;
-}
-
-@media screen and (min-width: 600px) {
-    .todo {
-        width: 50rem !important;
-    }
-}
-
-.todo {
-    margin: auto;
-    display: flex;
-    flex-direction: row !important;
-    word-wrap: break-word;
-    background-color: white;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem;
-    margin-bottom: 1.5rem;
-}
-
-.todo-title {
-    margin-top: 1rem;
-    font-size: larger;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.trash-btn {
-    margin-right: .5rem;
-}
-
-.checkbox {
-    transform: scale(1.75);
-    margin: auto;
-    margin-left: 1.5rem;
-}
-
-.strike-through {
-    text-decoration: line-through;
+    background-color: #1f2933 !important;
+    color: #f5f7fa !important;
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
 }
