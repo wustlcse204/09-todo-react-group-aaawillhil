@@ -31,12 +31,24 @@ export default function App() {
     });
   }
 
+  const handleUpload = (inputValue) => {
+    let url = "https://cse204.work/todos";
+    let data = {
+      "text": inputValue,
+    };
+    axios.post(url, data, config).then(function (response) {
+      let res = response.data;
+      console.log(res);
+      setTodos(todos => [res, ...todos]);
+    })
+  }
+
   return (
     <div className="App">
       <div className="container text-center">
         <h2 className="my-5" id="title">Sahil and Will's TodoList</h2>
         <div className="container mt-5">
-          <Newtodo />
+          <Newtodo handleUpload={handleUpload} />
           <div className="todo-container">
             {todos.map(todo => {
               return (
