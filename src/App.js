@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Todo from './Todo.js'
-import Newtodo from './Newtodo.js'
+import Todo from './Todo.js';
+import Newtodo from './Newtodo.js';
+import Sort from './Sort.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
 let config = {
@@ -12,6 +13,7 @@ let config = {
 
 export default function App() {
   const [todos, setTodos] = useState([]);
+  const [sortOption, setSortOption] = useState("title");
 
   useEffect(() => {
     let url = "https://cse204.work/todos";
@@ -43,25 +45,41 @@ export default function App() {
     })
   }
 
+  const handleSort = (method) => {
+    setSortOption(method);
+  }
+
   return (
     <div className="App">
       <div className="container text-center">
         <h2 className="my-5" id="title">Sahil and Will's TodoList</h2>
         <div className="container mt-5">
           <Newtodo handleUpload={handleUpload} />
+          <div className="sort-buttons mb-1">
+            <div className="h5">Sort Todos</div>
+            <div className="d-flex justify-content-center mt-3">
+              <button className="btn btn-secondary mx-2" onClick={() => handleSort("text")}>Alphabetical</button>
+              <button className="btn btn-secondary mx-2" onClick={() => handleSort("created_at")}>Created Time</button>
+              <button className="btn btn-secondary mx-2" onClick={() => handleSort("completed")}>Completed</button>
+            </div>
+          </div>
           <div className="todo-container">
-            {todos.map(todo => {
-              return (
-                <Todo
-                  key={todo.id}
-                  id={todo.id}
-                  bodyText={todo.text}
-                  completed={todo.completed}
-                  config={config}
-                  handleDelete={handleDelete}
-                />
-              )
-            })}
+            {/* From: https://stackoverflow.com/questions/48764203/how-to-sort-list-of-react-components-based-on-different-properties */}
+            <Sort by={sortOption}>
+              {todos.map(todo => {
+                return (
+                  <Todo
+                    key={todo.id}
+                    id={todo.id}
+                    bodyText={todo.text}
+                    completed={todo.completed}
+                    config={config}
+                    handleDelete={handleDelete}
+                    createdAt={todo.created_at}
+                  />
+                )
+              })}
+            </Sort>
           </div>
         </div>
       </div>
